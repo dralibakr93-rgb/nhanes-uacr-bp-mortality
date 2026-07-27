@@ -1,0 +1,4 @@
+"test","numerator_df","denominator_df","F","p"
+"Overall BP-treatment group by three-level UACR category",10,125,0.635649751987087,0.780950625273916
+"Low-grade UACR elevation vs normal across BP-treatment groups",5,131,0.580773901697644,0.714654691664622
+"Albuminuria vs normal across BP-treatment groups",5,131,0.455112578665338,0.8089499412352

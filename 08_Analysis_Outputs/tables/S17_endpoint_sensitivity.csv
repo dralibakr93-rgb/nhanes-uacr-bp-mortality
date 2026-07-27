@@ -1,0 +1,3 @@
+"endpoint","events","subclinical_HR","subclinical_lower","subclinical_upper","albuminuria_HR","albuminuria_lower","albuminuria_upper","cycles"
+"Heart disease only (UCOD 001)",658,1.4033413939311,1.08857151810864,1.8091297036158,2.63819103660088,2.00793890777078,3.4662667866366,"NHANES 1999-2014"
+"Heart disease or cerebrovascular disease (UCOD 001 or 005)",825,1.53142969429375,1.20794152822434,1.94154837280261,2.55365479958734,1.98779223876973,3.28060081343887,"NHANES 1999-2014"

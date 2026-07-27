@@ -1,0 +1,10 @@
+"step","criterion","n"
+0,"All NHANES 1999-2018",101316
+1,"Age >=30",45524
+2,"Valid UACR",42085
+3,"Mortality-eligible",41995
+4,"Preserved eGFR >=60",35943
+5,"No clinical CVD (prev_cvd==0)",32269
+6,"Classifiable BP (6 groups)",30404
+7,"Complete demographics",30404
+8,"Not pregnant (RIDEXPRG!=1)",29951

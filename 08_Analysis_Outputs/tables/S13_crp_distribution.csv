@@ -1,0 +1,37 @@
+"assay","bp_category","uacr_category","N","geometric_mean_mg_l","median_mg_l","q1_mg_l","q3_mg_l"
+"standard CRP","Non-elevated BP","Normal UACR (<10 mg/g)",4529,1.34774024839064,1.4,0.6,3.2
+"standard CRP","Non-elevated BP","Low-grade albuminuria (10-29 mg/g)",960,1.60051503653414,1.7,0.6,4.1
+"standard CRP","Non-elevated BP","Albuminuria (>=30 mg/g)",287,2.00848672420736,2,0.8,4.9
+"standard CRP","Elevated BP","Normal UACR (<10 mg/g)",1464,1.7195682748831,1.7,0.7,3.8
+"standard CRP","Elevated BP","Low-grade albuminuria (10-29 mg/g)",411,2.00833361005339,2.1,0.9,4.3
+"standard CRP","Elevated BP","Albuminuria (>=30 mg/g)",153,2.42140369479208,2.7,1.3,4.8
+"standard CRP","Stage 1 hypertension","Normal UACR (<10 mg/g)",2042,1.72390240244307,1.8,0.8,3.7
+"standard CRP","Stage 1 hypertension","Low-grade albuminuria (10-29 mg/g)",541,2.22531824306602,2.1,1,5.3
+"standard CRP","Stage 1 hypertension","Albuminuria (>=30 mg/g)",214,2.62261491669886,2.9,1,5.9
+"standard CRP","Stage 2 hypertension","Normal UACR (<10 mg/g)",1133,1.98753822263732,2.1,0.9,4.3
+"standard CRP","Stage 2 hypertension","Low-grade albuminuria (10-29 mg/g)",607,2.49538015205139,2.5,1.2,5.4
+"standard CRP","Stage 2 hypertension","Albuminuria (>=30 mg/g)",381,2.99455678066279,3.1,1.3,6.7
+"standard CRP","Treated - Controlled","Normal UACR (<10 mg/g)",1057,2.35884865760929,2.3,1,5.5
+"standard CRP","Treated - Controlled","Low-grade albuminuria (10-29 mg/g)",422,3.25517600455169,3.3,1.3,8.4
+"standard CRP","Treated - Controlled","Albuminuria (>=30 mg/g)",203,3.10101631290234,3.2,1.5,7.5
+"standard CRP","Treated - Uncontrolled","Normal UACR (<10 mg/g)",1269,2.32702487192761,2.4,1,5.1
+"standard CRP","Treated - Uncontrolled","Low-grade albuminuria (10-29 mg/g)",762,2.68927079469465,2.7,1.2,6.1
+"standard CRP","Treated - Uncontrolled","Albuminuria (>=30 mg/g)",512,3.30124010459895,3.4,1.6,7.1
+"hs-CRP","Non-elevated BP","Normal UACR (<10 mg/g)",1488,1.37313411745595,1.3,0.6,3.2
+"hs-CRP","Non-elevated BP","Low-grade albuminuria (10-29 mg/g)",321,1.34373316474751,1.22,0.6,3.1
+"hs-CRP","Non-elevated BP","Albuminuria (>=30 mg/g)",105,1.72242312157541,1.75,0.66,3.71
+"hs-CRP","Elevated BP","Normal UACR (<10 mg/g)",521,1.56930540652912,1.46,0.73,3.56
+"hs-CRP","Elevated BP","Low-grade albuminuria (10-29 mg/g)",162,2.21775950686286,3.04,0.9,5.4
+"hs-CRP","Elevated BP","Albuminuria (>=30 mg/g)",41,2.40860407443484,2.6,1.2,4.25
+"hs-CRP","Stage 1 hypertension","Normal UACR (<10 mg/g)",681,1.97402088956529,1.81,0.9,4.1
+"hs-CRP","Stage 1 hypertension","Low-grade albuminuria (10-29 mg/g)",232,2.53211504016683,2.92,1.24,6.02
+"hs-CRP","Stage 1 hypertension","Albuminuria (>=30 mg/g)",89,2.28301414822528,2.5,1.25,5.4
+"hs-CRP","Stage 2 hypertension","Normal UACR (<10 mg/g)",388,1.97213382733564,1.8,0.88,4.4
+"hs-CRP","Stage 2 hypertension","Low-grade albuminuria (10-29 mg/g)",240,2.25914888220495,2.3,1,5.1
+"hs-CRP","Stage 2 hypertension","Albuminuria (>=30 mg/g)",115,3.79494101063236,3.79,1.86,8.36
+"hs-CRP","Treated - Controlled","Normal UACR (<10 mg/g)",497,2.3915133835271,2.2,1.17,4.7
+"hs-CRP","Treated - Controlled","Low-grade albuminuria (10-29 mg/g)",211,1.79923500938215,1.7,0.9,3.76
+"hs-CRP","Treated - Controlled","Albuminuria (>=30 mg/g)",88,3.1631002617731,3,1.35,7.89
+"hs-CRP","Treated - Uncontrolled","Normal UACR (<10 mg/g)",564,2.30031822743717,2.3,1.06,4.4
+"hs-CRP","Treated - Uncontrolled","Low-grade albuminuria (10-29 mg/g)",414,2.78163024334679,3.15,1.18,6.1
+"hs-CRP","Treated - Uncontrolled","Albuminuria (>=30 mg/g)",260,2.55445260591229,2.6,1.3,5.8

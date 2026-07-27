@@ -1,0 +1,345 @@
+# Figure 5: subclinical-UACR subgroup forest (all-cause).
+# Auto-organized from the verified pipeline; logic unchanged.
+
+source("06_R_Code/00_config.R")
+suppressPackageStartupMessages({
+  library(ggplot2)
+  library(scales)
+})
+
+cohort <- prepare_cohort(readRDS(file.path(paths$data, "cohort_primary_v2.rds")))
+cohort$age_group_60 <- factor(
+  ifelse(cohort$age < 60, "<60 years", "≥60 years"),
+  levels = c("<60 years", "≥60 years")
+)
+cohort$sex_group <- factor(
+  ifelse(cohort$sex_female == 1, "Women", "Men"),
+  levels = c("Men", "Women")
+)
+cohort$bmi_group <- cut(
+  cohort$bmi, c(-Inf, 18.5, 25, 30, Inf), right = FALSE,
+  labels = c("Underweight", "Normal weight", "Overweight", "Obesity")
+)
+cohort$glycemic_group <- factor(
+  ifelse(cohort$dm_main == 1, "Diabetes",
+         ifelse(cohort$hba1c >= 5.7, "Prediabetes", "Normoglycemia")),
+  levels = c("Normoglycemia", "Prediabetes", "Diabetes")
+)
+cohort$dyslipidemia_group <- factor(
+  ifelse(cohort$dyslipidemia_main == 1, "Yes", "No"),
+  levels = c("No", "Yes")
+)
+cohort$egfr_group <- cut(
+  cohort$egfr, c(60, 75, 90, Inf), right = FALSE,
+  labels = c("60–74", "75–89", "≥90")
+)
+cohort$egfr_group <- factor(cohort$egfr_group, levels = c("≥90", "75–89", "60–74"))
+cohort$survey_period <- factor(
+  ifelse(cohort$cycle <= 5, "1999–2008", "2009–2018"),
+  levels = c("1999–2008", "2009–2018")
+)
+full_design <- make_design(cohort)
+
+bp_labels <- c(
+  "Non-elevated BP" = "Non-elevated BP",
+  "Elevated BP" = "Elevated BP",
+  "Stage 1 hypertension" = "Untreated stage 1 HTN",
+  "Stage 2 hypertension" = "Untreated stage 2 HTN",
+  "Treated - Controlled" = "Treated-controlled HTN",
+  "Treated - Uncontrolled" = "Treated-uncontrolled HTN"
+)
+race_labels <- c(
+  "Non-Hispanic White" = "NH White",
+  "Non-Hispanic Black" = "NH Black",
+  "Mexican American" = "Mexican American",
+  "Other Hispanic" = "Other Hispanic",
+  "Other / Multiracial" = "Other/multiracial"
+)
+
+format_events <- function(events, n) {
+  sprintf("%s/%s", format(events, big.mark = ","), format(n, big.mark = ","))
+}
+
+format_pint <- function(value) {
+  out <- rep("", length(value))
+  keep <- !is.na(value)
+  out[keep] <- ifelse(value[keep] < 0.001, "<0.001", sprintf("%.3f", value[keep]))
+  sub("0+$", "", sub("\\.$", "", out))
+}
+
+display_level <- function(variable, level) {
+  if (variable == "bp_stage") return(unname(bp_labels[level]))
+  if (variable == "race_eth" && level %in% names(race_labels)) {
+    return(unname(race_labels[level]))
+  }
+  level
+}
+
+specifications <- list(
+  "Age, y" = list(section = "Demographics", variable = "age_group_60", omit = character(), omit_est = character()),
+  "Sex" = list(section = "Demographics", variable = "sex_group", omit = "sex_female"),
+  "Race or ethnicity" = list(section = "Demographics", variable = "race_eth", omit = "race_eth"),
+  "Body-mass index" = list(section = "Cardiometabolic factors", variable = "bmi_group", omit = character(), omit_est = character()),
+  "Glycemic status" = list(section = "Cardiometabolic factors", variable = "glycemic_group", omit = "dm_main"),
+  "Smoking status" = list(section = "Cardiometabolic factors", variable = "smoking", omit = "smoking"),
+  "Dyslipidemia" = list(section = "Cardiometabolic factors", variable = "dyslipidemia_group", omit = character()),
+  "Kidney function" = list(section = "Kidney function", variable = "egfr_group", omit = character(), omit_est = character()),
+  "Survey period" = list(section = "Survey period", variable = "survey_period", omit = "cycle")
+)
+
+fit_exposure <- function(fit_design, outcome, adjustment, exposure_level) {
+  formula <- as.formula(paste0(
+    "Surv(ftime_years, ", outcome, ") ~ uacr_cat + ",
+    paste(adjustment, collapse = " + ")
+  ))
+  fit <- quietly(svycoxph(formula, design = fit_design))
+  summary_fit <- quietly(summary(fit))
+  row_index <- grep(paste0("uacr_cat", exposure_level),
+                    rownames(summary_fit$conf.int), fixed = TRUE)[1]
+  c(
+    HR = summary_fit$conf.int[row_index, 1],
+    lower = summary_fit$conf.int[row_index, 3],
+    upper = summary_fit$conf.int[row_index, 4]
+  )
+}
+
+interaction_p <- function(outcome, variable, adjustment, exposure_level) {
+  # Contrast-specific interaction: restrict UACR to normal vs the displayed
+  # exposure level so the test is specific to that contrast (not a global
+  # 3-level UACR test, which would be identical across the two forests).
+  ref <- levels(cohort$uacr_cat)[1]
+  design2 <- subset(full_design, uacr_cat %in% c(ref, exposure_level))
+  design2 <- update(design2, uacr_c2 = droplevels(factor(uacr_cat)))
+  formula <- as.formula(paste0(
+    "Surv(ftime_years, ", outcome, ") ~ uacr_c2 * ", variable,
+    " + ", paste(adjustment, collapse = " + ")
+  ))
+  fit <- quietly(svycoxph(formula, design = design2))
+  quietly(regTermTest(fit, as.formula(paste0("~uacr_c2:", variable))))$p
+}
+
+count_events <- function(outcome, exposure_level, adjustment,
+                         variable = NULL, level = NULL) {
+  selected <- complete.cases(cohort[, unique(c(
+    "ftime_years", outcome, "uacr_cat", adjustment
+  ))])
+  if (!is.null(variable)) selected <- selected & cohort[[variable]] == level
+  normal <- selected & cohort$uacr_cat == levels(cohort$uacr_cat)[1]
+  exposed <- selected & cohort$uacr_cat == exposure_level
+  c(
+    normal_events = sum(cohort[[outcome]][normal], na.rm = TRUE),
+    normal_n = sum(normal, na.rm = TRUE),
+    exposed_events = sum(cohort[[outcome]][exposed], na.rm = TRUE),
+    exposed_n = sum(exposed, na.rm = TRUE)
+  )
+}
+
+row_record <- function(row_type, label, HR = NA_real_, lower = NA_real_,
+                       upper = NA_real_, interaction = NA_real_,
+                       normal_events = NA_integer_, normal_n = NA_integer_,
+                       exposed_events = NA_integer_, exposed_n = NA_integer_) {
+  data.frame(
+    row_type = row_type, label = label, HR = HR, lower = lower, upper = upper,
+    interaction_p = interaction,
+    normal_events = normal_events, normal_n = normal_n,
+    exposed_events = exposed_events, exposed_n = exposed_n,
+    stringsAsFactors = FALSE
+  )
+}
+
+build_forest_data <- function(outcome, exposure_level) {
+  result <- list()
+  active_section <- NULL
+  for (group_name in names(specifications)) {
+    specification <- specifications[[group_name]]
+    adjustment <- setdiff(model_terms$M3, specification$omit)
+    # Within-stratum estimates keep the continuous covariate (age/BMI/eGFR) that
+    # the categorical subgroup was derived from, so residual within-stratum
+    # confounding is controlled; the interaction model omits it to avoid
+    # collinearity with the categorical modifier.
+    omit_est <- if (is.null(specification$omit_est)) specification$omit else specification$omit_est
+    adjustment_est <- setdiff(model_terms$M3, omit_est)
+    p_value <- tryCatch(
+      interaction_p(outcome, specification$variable, adjustment, exposure_level),
+      error = function(error) NA_real_
+    )
+    section_is_variable <- identical(group_name, specification$section)
+    if (!identical(active_section, specification$section)) {
+      active_section <- specification$section
+      result[[length(result) + 1]] <- row_record(
+        "section", active_section,
+        interaction = if (section_is_variable) p_value else NA_real_
+      )
+    }
+    if (!section_is_variable) {
+      result[[length(result) + 1]] <- row_record(
+        "variable", group_name, interaction = p_value
+      )
+    }
+    variable_values <- cohort[[specification$variable]]
+    for (level in levels(variable_values)) {
+      selected <- which(variable_values == level)
+      estimate <- tryCatch(
+        {
+          subgroup_design <- full_design[selected, ]
+          fit_exposure(subgroup_design, outcome, adjustment_est, exposure_level)
+        },
+        error = function(error) c(HR = NA_real_, lower = NA_real_, upper = NA_real_)
+      )
+      counts <- count_events(
+        outcome, exposure_level, adjustment_est, specification$variable, level
+      )
+      result[[length(result) + 1]] <- row_record(
+        "level", paste0("   ", display_level(specification$variable, level)),
+        HR = estimate["HR"], lower = estimate["lower"], upper = estimate["upper"],
+        normal_events = counts["normal_events"], normal_n = counts["normal_n"],
+        exposed_events = counts["exposed_events"], exposed_n = counts["exposed_n"]
+      )
+    }
+  }
+  overall <- fit_exposure(full_design, outcome, model_terms$M3, exposure_level)
+  counts <- count_events(outcome, exposure_level, model_terms$M3)
+  result[[length(result) + 1]] <- row_record(
+    "overall", "Overall (complete-case Model 3)",
+    HR = overall["HR"], lower = overall["lower"], upper = overall["upper"],
+    normal_events = counts["normal_events"], normal_n = counts["normal_n"],
+    exposed_events = counts["exposed_events"], exposed_n = counts["exposed_n"]
+  )
+  data <- do.call(rbind, result)
+  data$y <- rev(seq_len(nrow(data)))
+  data$estimate_text <- ifelse(
+    is.na(data$HR), "",
+    sprintf("%.2f (%.2f-%.2f)", data$HR, data$lower, data$upper)
+  )
+  data$normal_text <- ifelse(
+    is.na(data$normal_n), "",
+    format_events(data$normal_events, data$normal_n)
+  )
+  data$exposed_text <- ifelse(
+    is.na(data$exposed_n), "",
+    format_events(data$exposed_events, data$exposed_n)
+  )
+  data$interaction_text <- ifelse(
+    data$row_type %in% c("variable", "section"),
+    format_pint(data$interaction_p), ""
+  )
+  data$lower_plot <- pmax(data$lower, 0.22, na.rm = TRUE)
+  data$upper_plot <- pmin(data$upper, 4.8, na.rm = TRUE)
+  data
+}
+
+plot_forest_table <- function(data, title_text, subtitle_text, exposure_header,
+                              accent = "#1F4E79") {
+  line_col <- "#374B5A"
+  plot_rows <- subset(data, !is.na(HR))
+  plot_rows$weight <- 1 / (log(plot_rows$upper) - log(plot_rows$lower))
+  plot_rows$trunc_lo <- plot_rows$lower < 0.22
+  plot_rows$trunc_hi <- plot_rows$upper > 4.8
+  sub_rows <- subset(plot_rows, row_type != "overall")
+  section_rows <- subset(data, row_type == "section")
+  overall_row <- subset(data, row_type == "overall")
+  dh <- 0.36
+  diamond <- data.frame(
+    x = c(overall_row$lower_plot, overall_row$HR, overall_row$upper_plot, overall_row$HR),
+    y = c(overall_row$y, overall_row$y + dh, overall_row$y, overall_row$y - dh)
+  )
+  y_top <- max(data$y) + 1.9
+  x_min <- 0.11; x_max <- 29
+  col_normal <- 6.4; col_exposed <- 10.7; col_hr <- 13.9; col_pint <- 22.8
+  ggplot(data, aes(HR, y)) +
+    geom_rect(data = section_rows,
+              aes(xmin = x_min, xmax = x_max, ymin = y - 0.46, ymax = y + 0.46),
+              inherit.aes = FALSE, fill = "grey93", color = NA) +
+    geom_hline(yintercept = y_top - 0.9, color = "grey20", linewidth = 0.7) +
+    geom_hline(yintercept = overall_row$y + 0.55, color = "grey20", linewidth = 0.7) +
+    geom_vline(xintercept = 1, color = "grey55", linewidth = 0.6) +
+    geom_vline(xintercept = overall_row$HR, linetype = "dashed",
+               color = accent, linewidth = 0.7) +
+    geom_segment(data = sub_rows,
+                 aes(x = lower_plot, xend = upper_plot, y = y, yend = y),
+                 linewidth = 0.9, color = line_col, lineend = "round") +
+    geom_segment(data = subset(sub_rows, trunc_hi),
+                 aes(x = upper_plot / 1.3, xend = upper_plot, y = y, yend = y),
+                 linewidth = 0.9, color = line_col,
+                 arrow = arrow(length = unit(0.11, "cm"), type = "closed")) +
+    geom_segment(data = subset(sub_rows, trunc_lo),
+                 aes(x = lower_plot * 1.3, xend = lower_plot, y = y, yend = y),
+                 linewidth = 0.9, color = line_col,
+                 arrow = arrow(length = unit(0.11, "cm"), type = "closed")) +
+    geom_point(data = sub_rows, aes(x = HR, y = y, size = weight),
+               shape = 22, fill = accent, color = "white", stroke = 0.6) +
+    scale_size(range = c(2.1, 4.6), guide = "none") +
+    geom_polygon(data = diamond, aes(x = x, y = y),
+                 fill = accent, color = "white", linewidth = 0.5) +
+    geom_text(aes(x = x_min, label = label,
+                  fontface = ifelse(row_type %in% c("section", "variable", "overall"),
+                                    "bold", "plain")),
+              hjust = 0, size = 3.5, color = "grey12") +
+    geom_text(aes(x = col_normal, label = normal_text), hjust = 0.5,
+              size = 3.2, color = "grey20") +
+    geom_text(aes(x = col_exposed, label = exposed_text), hjust = 0.5,
+              size = 3.2, color = "grey20") +
+    geom_text(aes(x = col_hr, label = estimate_text,
+                  fontface = ifelse(row_type == "overall", "bold", "plain")),
+              hjust = 0, size = 3.25, color = "grey12") +
+    geom_text(aes(x = col_pint, label = interaction_text,
+                  fontface = ifelse(row_type %in% c("variable", "section"),
+                                    "bold", "plain")),
+              hjust = 0.5, size = 3.25, color = "grey12") +
+    annotate("text", x = x_min, y = y_top, vjust = 1, label = "Subgroup",
+             hjust = 0, fontface = "bold", size = 3.9, color = "grey5") +
+    annotate("text", x = col_normal, y = y_top, vjust = 1, label = "Normal UACR\nDeaths / N",
+             hjust = 0.5, fontface = "bold", size = 3.45, lineheight = 0.92, color = "grey5") +
+    annotate("text", x = col_exposed, y = y_top, vjust = 1,
+             label = paste0(exposure_header, "\nDeaths / N"), hjust = 0.5,
+             fontface = "bold", size = 3.45, lineheight = 0.92, color = "grey5") +
+    annotate("text", x = col_hr, y = y_top, vjust = 1, label = "HR (95% CI)",
+             hjust = 0, fontface = "bold", size = 3.7, color = "grey5") +
+    annotate("text", x = col_pint, y = y_top, vjust = 1, label = "P for\ninteraction",
+             hjust = 0.5, fontface = "bold", size = 3.6, lineheight = 0.92, color = "grey5") +
+    annotate("text", x = 0.28, y = 0.35, label = "Lower risk",
+             hjust = 0, size = 3.0, fontface = "italic", color = "grey45") +
+    annotate("text", x = 1.13, y = 0.35,
+             label = paste0("Higher risk with ", tolower(exposure_header)),
+             hjust = 0, size = 3.0, fontface = "italic", color = "grey45") +
+    scale_x_log10(limits = c(x_min, x_max),
+                  breaks = c(0.25, 0.50, 1.00, 2.00, 4.00),
+                  labels = c("0.25", "0.50", "1.00", "2.00", "4.00")) +
+    scale_y_continuous(limits = c(-0.2, y_top + 0.35), expand = c(0, 0)) +
+    labs(title = title_text, subtitle = subtitle_text,
+         x = "Adjusted hazard ratio (95% CI, log scale)", y = NULL) +
+    theme_minimal(base_size = 12, base_family = "sans") +
+    theme(
+      plot.title = element_text(face = "bold", size = 16, color = "grey5"),
+      plot.subtitle = element_text(size = 11.5, color = "grey30", margin = margin(b = 14)),
+      axis.text.y = element_blank(), axis.ticks.y = element_blank(),
+      axis.text.x = element_text(size = 10.5, color = "grey20"),
+      axis.title.x = element_text(face = "bold", size = 11.5, margin = margin(t = 6)),
+      panel.grid = element_blank(),
+      plot.background = element_rect(fill = "white", color = NA),
+      plot.margin = margin(10, 16, 10, 14)
+    )
+}
+
+save_plot <- function(plot, filename, width = 13.8, height = 12.3) {
+  ggsave(file.path(paths$figures, paste0(filename, ".pdf")), plot,
+         width = width, height = height, device = grDevices::pdf)
+  ggsave(file.path(paths$figures, paste0(filename, ".png")), plot,
+         width = width, height = height, dpi = 300,
+         device = ragg::agg_png, bg = "white")
+  ggsave(file.path(paths$figures, paste0(filename, ".tiff")), plot,
+         width = width, height = height, dpi = 600,
+         device = ragg::agg_tiff, compression = "lzw", bg = "white")
+}
+subclinical_allcause <- build_forest_data(
+  "death_allcause", "Low-grade albuminuria (10-29 mg/g)"
+)
+save_plot(
+  plot_forest_table(
+    subclinical_allcause,
+    NULL,
+    NULL,
+    "Low-grade", "#1F4E79"
+  ),
+  "Figure_5_Subgroup_Forest_Low-grade"
+)

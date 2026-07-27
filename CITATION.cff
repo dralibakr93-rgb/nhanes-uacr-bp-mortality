@@ -1,0 +1,49 @@
+cff-version: 1.2.0
+message: If you use this code or the derived data, please cite the paper.
+title: >-
+  Analysis code for "Low-Grade Albuminuria and Mortality Across Blood Pressure
+  Levels and Treatment Status in US Adults with Preserved eGFR and Without
+  Self-Reported Major Cardiovascular Disease"
+abstract: >-
+  Survey-weighted Cox analysis of NHANES 1999-2018 linked to the 2019 public-use
+  mortality files, examining all-cause mortality across urinary
+  albumin-to-creatinine ratio categories within six blood-pressure and
+  antihypertensive-treatment states. Includes cohort derivation from the raw
+  NHANES files, all statistical tests, and the figure generators.
+type: software
+license: MIT
+authors:
+  - given-names: Ali
+    family-names: Bakr
+    affiliation: Faculty of Medicine, Al-Azhar University, Cairo, Egypt
+  - given-names: Ahmed
+    family-names: Elaraby
+    affiliation: Faculty of Medicine, Al-Azhar University, Cairo, Egypt
+  - given-names: Salim S.
+    family-names: Virani
+    affiliation: The Aga Khan University, Karachi, Pakistan
+  - given-names: Janani
+    family-names: Rangaswami
+    affiliation: George Washington University School of Medicine and Health Sciences, Washington, DC, USA
+  - given-names: Khurram
+    family-names: Nasir
+    affiliation: Houston Methodist DeBakey Heart & Vascular Center, Houston, Texas, USA
+  - given-names: Dhruv S.
+    family-names: Kazi
+    affiliation: Beth Israel Deaconess Medical Center and Harvard Medical School, Boston, Massachusetts, USA
+  - given-names: Rishi K.
+    family-names: Wadhera
+    affiliation: Beth Israel Deaconess Medical Center and Harvard Medical School, Boston, Massachusetts, USA
+  - given-names: Sarju
+    family-names: Ganatra
+    affiliation: Lahey Hospital & Medical Center, Burlington, Massachusetts, USA
+  - given-names: Sourbha S.
+    family-names: Dani
+    affiliation: Lahey Hospital & Medical Center, Burlington, Massachusetts, USA
+keywords:
+  - albuminuria
+  - urinary albumin-to-creatinine ratio
+  - blood pressure
+  - hypertension
+  - mortality
+  - NHANES

@@ -1,0 +1,21 @@
+.DS_Store
+__pycache__/
+*.pyc
+.Rhistory
+.RData
+.Rproj.user/
+
+# Raw NHANES downloads: public, large, and rebuildable with 00_ingest_nhanes.R
+08_Raw_data_NHANES_1999_2018/
+
+# 29 MB; too large for a comfortable git clone. It is in the Zenodo archive,
+# and 00_ingest_nhanes.R regenerates it from the raw downloads.
+07_R_Data/raw_domains.rds
+
+# Intermediate figures from the supplementary generators; the scripts recreate
+# this directory themselves, and the final copies live in 08_Analysis_Outputs.
+06_R_Code/supplementary_figure_generators/output/
+
+# Fitted survey-Cox object written by test_joint_bp_uacr_risk.R. Nothing reads
+# it back, and its results are already in joint_18_cells.csv.
+08_Analysis_Outputs/absolute_risk_model.rds

@@ -1,0 +1,4 @@
+"specification","overall_p","nonlinearity_p","knot_locations_mg_g"
+"3 knots (10th, 50th, 90th percentiles)",1.86566391073076e-23,0.99706072036611,"3.27, 6.9, 30.87"
+"4 knots (5th, 35th, 65th, 95th percentiles)",1.18079395532722e-22,0.119965432461554,"2.73, 5.35, 9.5, 64.24"
+"5 knots (5th, 27.5th, 50th, 72.5th, 95th percentiles)",3.75772328872914e-22,0.179099248221525,"2.73, 4.71, 6.9, 11.67, 64.24"

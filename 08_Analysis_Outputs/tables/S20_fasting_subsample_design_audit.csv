@@ -1,0 +1,8 @@
+"metric","value"
+"Eligible fasting cohort before model-specific complete cases",13785
+"All-cause deaths in eligible fasting cohort",1565
+"Observed PSU-stratum cells",301
+"Observed strata",148
+"Design degrees of freedom",153
+"LDL missing with fasting TG observed",302
+"LDL missing and fasting TG >=200 mg/dL",302

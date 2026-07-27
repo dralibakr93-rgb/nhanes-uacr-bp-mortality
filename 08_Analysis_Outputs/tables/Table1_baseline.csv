@@ -1,0 +1,56 @@
+"order","section","row_type","characteristic","overall","normal","subclinical","albuminuria","p","max_pairwise_smd"
+1,"Sample size","count","Unweighted analytic N","29,951","19,995"," 6,865"," 3,091",,
+2,"Sample size","count","Weighted population estimate","132,834,431"," 94,421,601"," 27,713,299"," 10,699,531",,
+3,"Demographics","data","Age, y","49.8 (13.0)","48.3 (12.2)","52.8 (14.0)","54.5 (14.5)",1.19490292041922e-51,0.461260888655202
+4,"Demographics","category","Age category, %","","","","",2.91136111203485e-101,0.454189354240689
+5,"Demographics","level","   30-44","39.4","42.8","32.1","28.6",,
+6,"Demographics","level","   45-59","37.3","37.9","36.0","35.2",,
+7,"Demographics","level","   60-74","18.7","16.8","23.0","24.9",,
+8,"Demographics","level","   >=75","4.6","2.6","8.9","11.2",,
+9,"Demographics","data","Female sex, %","51.5","47.4","63.6","56.4",2.73724430365638e-43,0.329728989599104
+10,"Demographics","category","Race or ethnicity, %","","","","",4.06112196619623e-19,0.223211360857502
+11,"Demographics","level","   Non-Hispanic White","70.8","72.1","69.7","61.7",,
+12,"Demographics","level","   Non-Hispanic Black","9.4","9.1","9.3","12.6",,
+13,"Demographics","level","   Mexican American","7.7","7.2","8.4","10.4",,
+14,"Demographics","level","   Other Hispanic","5.5","5.3","5.5","7.2",,
+15,"Demographics","level","   Other / Multiracial","6.6","6.3","7.1","8.1",,
+16,"Demographics","category","Educational attainment, %","","","","",6.8005567976994e-25,0.29482412711743
+17,"Demographics","level","   < High school","15.9","14.5","18.1","23.5",,
+18,"Demographics","level","   High school / GED","23.0","22.6","23.6","24.6",,
+19,"Demographics","level","   Some college / AA","29.9","29.8","30.4","29.4",,
+20,"Demographics","level","   College graduate +","31.2","33.1","27.9","22.5",,
+21,"Demographics","data","Family income-to-poverty ratio","3.2 (1.6)","3.3 (1.6)","3.1 (1.6)","2.8 (1.6)",2.69708660286956e-29,0.361562664808743
+22,"Anthropometry and blood pressure","data","Body-mass index, kg/m2","28.9 (6.5)","28.7 (6.1)","29.0 (7.0)","30.5 (7.6)",7.57391451395197e-13,0.252476354462933
+23,"Anthropometry and blood pressure","category","BMI category, %","","","","",3.29580048196367e-34,0.320651492637073
+24,"Anthropometry and blood pressure","level","   Underweight (<18.5)","1.2","0.9","1.9","2.6",,
+25,"Anthropometry and blood pressure","level","   Normal (18.5-<25)","27.6","27.6","29.8","22.1",,
+26,"Anthropometry and blood pressure","level","   Overweight (25-<30)","35.1","37.3","30.3","27.8",,
+27,"Anthropometry and blood pressure","level","   Obesity (>=30)","36.0","34.2","38.0","47.5",,
+28,"Anthropometry and blood pressure","data","Systolic blood pressure, mm Hg","122.8 (17.0)","120.4 (15.0)","126.8 (18.7)","133.4 (22.5)",4.78708441487437e-58,0.67712681295963
+29,"Anthropometry and blood pressure","data","Diastolic blood pressure, mm Hg","72.7 (11.7)","72.5 (10.8)","72.8 (13.0)","74.5 (14.5)",9.43803164779366e-07,0.157846634451479
+30,"Anthropometry and blood pressure","category","Blood-pressure phenotype, %","","","","",2.87805469962658e-130,0.672217128635845
+31,"Anthropometry and blood pressure","level","   Non-elevated BP","37.0","41.3","28.9","19.8",,
+32,"Anthropometry and blood pressure","level","   Elevated BP","12.1","12.9","10.9","8.7",,
+33,"Anthropometry and blood pressure","level","   Stage 1 hypertension","16.6","17.3","15.4","14.3",,
+34,"Anthropometry and blood pressure","level","   Stage 2 hypertension","10.3","8.4","14.4","17.3",,
+35,"Anthropometry and blood pressure","level","   Treated - Controlled","10.5","10.0","11.7","11.8",,
+36,"Anthropometry and blood pressure","level","   Treated - Uncontrolled","13.4","10.2","18.8","28.1",,
+37,"Lifestyle","category","Smoking status, %","","","","",0.00595848799455458,0.0965323082564166
+38,"Lifestyle","level","   Never","53.4","54.0","53.0","49.3",,
+39,"Lifestyle","level","   Former","26.1","26.0","25.7","27.8",,
+40,"Lifestyle","level","   Current","20.5","20.0","21.4","22.9",,
+41,"Glycemia and kidney function","data","HbA1c, %","5.4 [5.2-5.7]","5.4 [5.2-5.6]","5.5 [5.2-5.8]","5.7 [5.3-6.4]",2.12527624350747e-49,0.606066016344393
+42,"Glycemia and kidney function","category","Glycemic status, %","","","","",1.47598753050317e-118,0.675153328883058
+43,"Glycemia and kidney function","level","   Normoglycemia","70.0","74.5","63.6","47.6",,
+44,"Glycemia and kidney function","level","   Prediabetes","19.8","18.8","21.8","23.2",,
+45,"Glycemia and kidney function","level","   Diabetes","10.2","6.7","14.6","29.2",,
+46,"Glycemia and kidney function","data","Serum creatinine, mg/dL","0.9 (0.2)","0.9 (0.2)","0.8 (0.2)","0.8 (0.2)",2.60083048206281e-51,0.376816711136317
+47,"Glycemia and kidney function","data","eGFR, mL/min/1.73 m2","95.5 (15.7)","95.6 (15.4)","95.7 (16.0)","94.6 (17.2)",0.0968329791468773,0.0662825395353482
+48,"Glycemia and kidney function","data","UACR, mg/g","6.3 [4.3-11.1]","5.1 [3.8-6.7]","14.2 [11.6-19.1]","58.2 [39.6-126.6]",6.46682439593457e-152,2.68803912737176
+49,"Lipids","data","Total cholesterol, mg/dL","202.3 (40.8)","201.9 (39.3)","202.9 (42.2)","205.3 (49.1)",0.0160254192483953,0.0783043182142333
+50,"Lipids","data","HDL cholesterol, mg/dL","53.7 (16.6)","53.4 (16.0)","55.2 (17.6)","52.7 (18.7)",1.01738887213575e-07,0.137924771271492
+51,"Lipids","data","Non-HDL cholesterol, mg/dL","148.6 (42.0)","148.5 (40.6)","147.6 (43.5)","152.6 (49.8)",0.00107679863125305,0.106698018676701
+52,"Lipids","data","Dyslipidemia, %","49.5","47.3","53.4","59.2",6.11451689319226e-21,0.240624187395691
+53,"Cardiometabolic medications","data","Antihypertensive medication use, %","23.9","20.2","30.5","39.9",5.73445669630546e-58,0.440609480464323
+54,"Cardiometabolic medications","data","Lipid-lowering therapy, %","13.0","11.5","16.1","17.7",2.6888638574133e-18,0.175209058664751
+55,"Cardiometabolic medications","data","Prescription-recorded aspirin or antiplatelet use, %","0.6","0.5","0.8","1.2",1.2566064165793e-05,0.0838202420580931

@@ -1,0 +1,19 @@
+"bp_category","uacr_category","adjusted_geometric_mean_mg_l","lower","upper"
+"Non-elevated BP","Normal UACR (<10 mg/g)",1.61891387413651,1.54887324297206,1.692121769011
+"Non-elevated BP","Low-grade albuminuria (10-29 mg/g)",1.86987560128314,1.70865861687043,2.04630388408308
+"Non-elevated BP","Albuminuria (>=30 mg/g)",2.1481043012244,1.84442693851622,2.50178090147114
+"Elevated BP","Normal UACR (<10 mg/g)",1.81233559277873,1.68876246081247,1.94495103785786
+"Elevated BP","Low-grade albuminuria (10-29 mg/g)",1.93516336365218,1.71649442609858,2.18168913751344
+"Elevated BP","Albuminuria (>=30 mg/g)",2.14333670444767,1.75044249194936,2.62441768282069
+"Stage 1 hypertension","Normal UACR (<10 mg/g)",1.81212317143753,1.71571578511302,1.91394776276683
+"Stage 1 hypertension","Low-grade albuminuria (10-29 mg/g)",1.97555061626058,1.72406909436985,2.26371451709948
+"Stage 1 hypertension","Albuminuria (>=30 mg/g)",2.18696562948006,1.81550117955734,2.63443434704531
+"Stage 2 hypertension","Normal UACR (<10 mg/g)",1.87148875598848,1.73506128362941,2.01864348933244
+"Stage 2 hypertension","Low-grade albuminuria (10-29 mg/g)",2.28229107554399,2.06982075967403,2.5165717993514
+"Stage 2 hypertension","Albuminuria (>=30 mg/g)",2.28897368222453,1.96806264084308,2.66221227372726
+"Treated - Controlled","Normal UACR (<10 mg/g)",1.83008158689298,1.69325207864114,1.97796811055593
+"Treated - Controlled","Low-grade albuminuria (10-29 mg/g)",2.26911620238701,1.97346580477965,2.60905880784194
+"Treated - Controlled","Albuminuria (>=30 mg/g)",2.03544604617903,1.71203810023839,2.41994649904635
+"Treated - Uncontrolled","Normal UACR (<10 mg/g)",1.80948625521361,1.67289814654724,1.95722645432109
+"Treated - Uncontrolled","Low-grade albuminuria (10-29 mg/g)",1.99341855416822,1.78448737468076,2.22681179395455
+"Treated - Uncontrolled","Albuminuria (>=30 mg/g)",2.08882908966392,1.87917219105585,2.32187714707222

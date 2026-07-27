@@ -1,0 +1,151 @@
+"threshold","model","net_benefit"
+0.01,"Clinical model",0.0603786475507317
+0.01,"Clinical model + UACR (categorical)",0.0608517153584262
+0.01,"Clinical model + log2(UACR)",0.0606983127531809
+0.01,"Treat all",0.0603426913006859
+0.01,"Treat none",0
+0.02,"Clinical model",0.0535601521343046
+0.02,"Clinical model + UACR (categorical)",0.0538299925117027
+0.02,"Clinical model + log2(UACR)",0.0540078801669983
+0.02,"Treat all",0.050754351415999
+0.02,"Treat none",0
+0.03,"Clinical model",0.0486630022443607
+0.03,"Clinical model + UACR (categorical)",0.0493638863902369
+0.03,"Clinical model + log2(UACR)",0.0492170933528377
+0.03,"Treat all",0.040968313801731
+0.03,"Treat none",0
+0.04,"Clinical model",0.0441147967231449
+0.04,"Clinical model + UACR (categorical)",0.0453823714874652
+0.04,"Clinical model + log2(UACR)",0.0453986034884751
+0.04,"Treat all",0.0309784004038323
+0.04,"Treat none",0
+0.05,"Clinical model",0.0414239145985543
+0.05,"Clinical model + UACR (categorical)",0.0420194863548339
+0.05,"Clinical model + log2(UACR)",0.042085302220427
+0.05,"Treat all",0.0207781730396621
+0.05,"Treat none",0
+0.06,"Clinical model",0.0385716883590168
+0.06,"Clinical model + UACR (categorical)",0.0391472063503828
+0.06,"Clinical model + log2(UACR)",0.0391318706114325
+0.06,"Treat all",0.0103609195613607
+0.06,"Treat none",0
+0.07,"Clinical model",0.0360084549765608
+0.07,"Clinical model + UACR (categorical)",0.0367701844475196
+0.07,"Clinical model + log2(UACR)",0.0365865095105745
+0.07,"Treat all",-0.000280360873463406
+0.07,"Treat none",0
+0.08,"Clinical model",0.0340493099714317
+0.08,"Clinical model + UACR (categorical)",0.0344725472006409
+0.08,"Clinical model + log2(UACR)",0.0347538576883477
+0.08,"Treat all",-0.0111529734916532
+0.08,"Treat none",0
+0.09,"Clinical model",0.0323267676092187
+0.09,"Clinical model + UACR (categorical)",0.0325516470206827
+0.09,"Clinical model + log2(UACR)",0.0326924356873691
+0.09,"Treat all",-0.0222645446289241
+0.09,"Treat none",0
+0.1,"Clinical model",0.0303729637311827
+0.1,"Clinical model + UACR (categorical)",0.0309293128983081
+0.1,"Clinical model + log2(UACR)",0.0309013093552147
+0.1,"Treat all",-0.0336230395692455
+0.1,"Treat none",0
+0.11,"Clinical model",0.0285824064358616
+0.11,"Clinical model + UACR (categorical)",0.0299181387559737
+0.11,"Clinical model + log2(UACR)",0.0296947912274521
+0.11,"Treat all",-0.0452367815868775
+0.11,"Treat none",0
+0.12,"Clinical model",0.0271421720386817
+0.12,"Clinical model + UACR (categorical)",0.0284366783981775
+0.12,"Clinical model + log2(UACR)",0.0280863090677671
+0.12,"Treat all",-0.0571144722867284
+0.12,"Treat none",0
+0.13,"Clinical model",0.0262384414121618
+0.13,"Clinical model + UACR (categorical)",0.0267624617968229
+0.13,"Clinical model + log2(UACR)",0.0267863223552443
+0.13,"Treat all",-0.0692652133474954
+0.13,"Treat none",0
+0.14,"Clinical model",0.0245794162015619
+0.14,"Clinical model + UACR (categorical)",0.0250072220071483
+0.14,"Clinical model + log2(UACR)",0.0257414254508977
+0.14,"Treat all",-0.0816985297817686
+0.14,"Treat none",0
+0.15,"Clinical model",0.0229843789442229
+0.15,"Clinical model + UACR (categorical)",0.0238097908286684
+0.15,"Clinical model + log2(UACR)",0.024665358952492
+0.15,"Treat all",-0.0944243948380247
+0.15,"Treat none",0
+0.16,"Clinical model",0.0213275152580323
+0.16,"Clinical model + UACR (categorical)",0.0222490444680487
+0.16,"Clinical model + log2(UACR)",0.023415296253058
+0.16,"Treat all",-0.107453256681335
+0.16,"Treat none",0
+0.17,"Clinical model",0.0202924890194469
+0.17,"Clinical model + UACR (categorical)",0.0211581696668194
+0.17,"Clinical model + log2(UACR)",0.0223054576257407
+0.17,"Treat all",-0.120796067002796
+0.17,"Treat none",0
+0.18,"Clinical model",0.019102238166604
+0.18,"Clinical model + UACR (categorical)",0.0201183759828387
+0.18,"Clinical model + log2(UACR)",0.0208379159159269
+0.18,"Treat all",-0.134464311722343
+0.18,"Treat none",0
+0.19,"Clinical model",0.0181208478105583
+0.19,"Clinical model + UACR (categorical)",0.019334261297733
+0.19,"Clinical model + log2(UACR)",0.0198750857152336
+0.19,"Treat all",-0.148470043965828
+0.19,"Treat none",0
+0.2,"Clinical model",0.0174097516097645
+0.2,"Clinical model + UACR (categorical)",0.0186466389615213
+0.2,"Clinical model + log2(UACR)",0.0194280400297255
+0.2,"Treat all",-0.162825919515401
+0.2,"Treat none",0
+0.21,"Clinical model",0.0166663306813657
+0.21,"Clinical model + UACR (categorical)",0.0177655226456597
+0.21,"Clinical model + log2(UACR)",0.0187914223914262
+0.21,"Treat all",-0.177545234952305
+0.21,"Treat none",0
+0.22,"Clinical model",0.0159502240427115
+0.22,"Clinical model + UACR (categorical)",0.0172536606776127
+0.22,"Clinical model + log2(UACR)",0.0180187517509482
+0.22,"Treat all",-0.192641968733745
+0.22,"Treat none",0
+0.23,"Clinical model",0.0145832680791069
+0.23,"Clinical model + UACR (categorical)",0.0165122622402212
+0.23,"Clinical model + log2(UACR)",0.017121148677855
+0.23,"Treat all",-0.208130825470547
+0.23,"Treat none",0
+0.24,"Clinical model",0.0137535516418236
+0.24,"Clinical model + UACR (categorical)",0.015909303411843
+0.24,"Clinical model + log2(UACR)",0.015713137876447
+0.24,"Treat all",-0.224027283700422
+0.24,"Treat none",0
+0.25,"Clinical model",0.0135090070352649
+0.25,"Clinical model + UACR (categorical)",0.0146992252429382
+0.25,"Clinical model + log2(UACR)",0.0145240660282064
+0.25,"Treat all",-0.240347647483095
+0.25,"Treat none",0
+0.26,"Clinical model",0.0125041162052957
+0.26,"Clinical model + UACR (categorical)",0.0141116848558382
+0.26,"Clinical model + log2(UACR)",0.0136249519585935
+0.26,"Treat all",-0.257109102178812
+0.26,"Treat none",0
+0.27,"Clinical model",0.0120635696772468
+0.27,"Clinical model + UACR (categorical)",0.0136576234699513
+0.27,"Clinical model + log2(UACR)",0.0126629581871031
+0.27,"Treat all",-0.274329774811399
+0.27,"Treat none",0
+0.28,"Clinical model",0.0113992579175317
+0.28,"Clinical model + UACR (categorical)",0.0128825806697558
+0.28,"Clinical model + log2(UACR)",0.0126344253765724
+0.28,"Treat all",-0.292028799461557
+0.28,"Treat none",0
+0.29,"Clinical model",0.0109588679599383
+0.29,"Clinical model + UACR (categorical)",0.0126088707797902
+0.29,"Clinical model + log2(UACR)",0.012259023683263
+0.29,"Treat all",-0.310226388186368
+0.29,"Treat none",0
+0.3,"Clinical model",0.010387326798756
+0.3,"Clinical model + UACR (categorical)",0.0112963572051121
+0.3,"Clinical model + log2(UACR)",0.0116930984267996
+0.3,"Treat all",-0.328943908017601
+0.3,"Treat none",0
