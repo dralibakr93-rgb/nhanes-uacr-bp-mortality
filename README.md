@@ -10,6 +10,26 @@ The analytic cohort is 29,951 participants with 3,432 deaths over a median 9.2
 years of follow-up. Everything reported in the paper is produced by the code
 here.
 
+## Data sources
+
+Both are public and were used unmodified.
+
+- NHANES 1999-2000 through 2017-2018 public-use files:
+  https://wwwn.cdc.gov/nchs/nhanes/
+- NHANES 2019 public-use Linked Mortality Files:
+  https://www.cdc.gov/nchs/data-linkage/mortality-public.htm
+
+Serum creatinine from 1999-2000 and urinary creatinine from 1999-2006 are
+calibrated before eGFR and UACR are formed; the transformations are in
+`01_derive_cohort.R` and in the paper's Supplementary Methods.
+
+## Requirements
+
+R 4.6.0 under a UTF-8 locale, with survey 4.5, survival 3.8.6, mice 3.19.0,
+mitools 2.4, MASS 7.3.65, Hmisc 5.2.5, ggplot2 4.0.3, ragg 1.5.2, scales 1.4.0,
+dplyr 1.2.1, and haven 2.5.5 for the ingestion step. The landmark figures also
+need cowplot 1.2.0, and the Word builders need Python with python-docx 1.2.0.
+
 ## What is here
 
 ```
@@ -86,25 +106,6 @@ the cohort exists:
 Rscript 06_R_Code/test_primary_model_hierarchy.R
 ```
 
-## Data sources
-
-Both are public and were used unmodified.
-
-- NHANES 1999-2000 through 2017-2018 public-use files:
-  https://wwwn.cdc.gov/nchs/nhanes/
-- NHANES 2019 public-use Linked Mortality Files:
-  https://www.cdc.gov/nchs/data-linkage/mortality-public.htm
-
-Serum creatinine from 1999-2000 and urinary creatinine from 1999-2006 are
-calibrated before eGFR and UACR are formed; the transformations are in
-`01_derive_cohort.R` and in the paper's Supplementary Methods.
-
-## Requirements
-
-R 4.6.0 under a UTF-8 locale, with survey 4.5, survival 3.8.6, mice 3.19.0,
-mitools 2.4, MASS 7.3.65, Hmisc 5.2.5, ggplot2 4.0.3, ragg 1.5.2, scales 1.4.0,
-dplyr 1.2.1, and haven 2.5.5 for the ingestion step. The landmark figures also
-need cowplot 1.2.0, and the Word builders need Python with python-docx 1.2.0.
 
 ## License
 
