@@ -1,5 +1,7 @@
 cff-version: 1.2.0
-message: If you use this code or the derived data, please cite the paper.
+message: >-
+  This file credits the analysis code. Please cite the paper itself, whose full
+  author list is on the manuscript.
 title: >-
   Analysis code for "Low-Grade Albuminuria and Mortality Across Blood Pressure
   Levels and Treatment Status in US Adults with Preserved eGFR and Without
@@ -16,30 +18,6 @@ authors:
   - given-names: Ali
     family-names: Bakr
     affiliation: Faculty of Medicine, Al-Azhar University, Cairo, Egypt
-  - given-names: Ahmed
-    family-names: Elaraby
-    affiliation: Faculty of Medicine, Al-Azhar University, Cairo, Egypt
-  - given-names: Salim S.
-    family-names: Virani
-    affiliation: The Aga Khan University, Karachi, Pakistan
-  - given-names: Janani
-    family-names: Rangaswami
-    affiliation: George Washington University School of Medicine and Health Sciences, Washington, DC, USA
-  - given-names: Khurram
-    family-names: Nasir
-    affiliation: Houston Methodist DeBakey Heart & Vascular Center, Houston, Texas, USA
-  - given-names: Dhruv S.
-    family-names: Kazi
-    affiliation: Beth Israel Deaconess Medical Center and Harvard Medical School, Boston, Massachusetts, USA
-  - given-names: Rishi K.
-    family-names: Wadhera
-    affiliation: Beth Israel Deaconess Medical Center and Harvard Medical School, Boston, Massachusetts, USA
-  - given-names: Sarju
-    family-names: Ganatra
-    affiliation: Lahey Hospital & Medical Center, Burlington, Massachusetts, USA
-  - given-names: Sourbha S.
-    family-names: Dani
-    affiliation: Lahey Hospital & Medical Center, Burlington, Massachusetts, USA
 keywords:
   - albuminuria
   - urinary albumin-to-creatinine ratio
